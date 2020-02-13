@@ -1,4 +1,4 @@
-import Timeout from './_timeout.vue'
+import Timeout from './index.vue'
 
 describe('@views/timeout', () => {
   it('is a valid view', () => {

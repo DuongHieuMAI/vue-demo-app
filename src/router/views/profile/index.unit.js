@@ -1,4 +1,4 @@
-import Profile from './profile.vue'
+import Profile from './index.vue'
 
 describe('@views/profile', () => {
   it('is a valid view', () => {

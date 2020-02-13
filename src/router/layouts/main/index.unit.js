@@ -1,4 +1,4 @@
-import MainLayout from './main.vue'
+import MainLayout from './index.vue'
 
 describe('@layouts/main.vue', () => {
   it('renders its content', () => {

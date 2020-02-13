@@ -14,11 +14,20 @@ export default {
 
 <template>
   <div id="app">
-    <!--
-    Even when routes use the same component, treat them
-    as distinct and create the component again.
-    -->
-    <RouterView :key="$route.fullPath" />
+    <v-app>
+      <!--
+      Even when routes use the same component, treat them
+      as distinct and create the component again.
+      -->
+      <!-- <main> -->
+      <v-content>
+        <v-container fluid pa-0>
+          <router-view :key="$route.fullPath"></router-view>
+        </v-container>
+      </v-content>
+      <!-- </main> -->
+    </v-app>
+    <!-- <RouterView :key="$route.fullPath" /> -->
   </div>
 </template>
 

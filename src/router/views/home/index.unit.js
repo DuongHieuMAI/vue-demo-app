@@ -1,4 +1,4 @@
-import Home from './home.vue'
+import Home from './index.vue'
 
 describe('@views/home', () => {
   it('is a valid view', () => {
@@ -7,6 +7,6 @@ describe('@views/home', () => {
 
   it('renders an element', () => {
     const { element } = shallowMountView(Home)
-    expect(element.textContent).toContain('Home Page')
+    expect(element.innerHTML).toContain('map')
   })
 })

@@ -1,4 +1,4 @@
-import Loading from './_loading.vue'
+import Loading from './index.vue'
 
 describe('@views/loading', () => {
   it('is a valid view', () => {

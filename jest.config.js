@@ -52,3 +52,5 @@ module.exports = {
     },
   },
 }
+
+// console.log(require('./aliases.config').jest)

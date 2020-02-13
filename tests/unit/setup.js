@@ -3,6 +3,10 @@ import path from 'path'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import vuetify from 'vuetify'
+
+// Add vuetify
+Vue.use(vuetify)
 
 // ===
 // Utility functions
@@ -38,12 +42,12 @@ Vue.config.productionTip = false
 // ===
 
 const globalComponentFiles = fs
-  .readdirSync(path.join(__dirname, '../../src/components'))
+  .readdirSync(path.join(__dirname, '../../src/components/common'))
   .filter((fileName) => /^_base-.+\.vue$/.test(fileName))
 
 for (const fileName of globalComponentFiles) {
   const componentName = _.pascalCase(fileName.match(/^_(base-.+)\.vue$/)[1])
-  const componentConfig = require('../../src/components/' + fileName)
+  const componentConfig = require('../../src/components/common/' + fileName)
   Vue.component(componentName, componentConfig.default || componentConfig)
 }
 
@@ -122,6 +126,7 @@ global.createComponentMocks = ({ store, router, style, mocks, stubs }) => {
   // Vue and thereby affecting other tests.
   // https://vue-test-utils.vuejs.org/api/#createlocalvue
   const localVue = vueTestUtils.createLocalVue()
+
   const returnOptions = { localVue }
 
   // https://vue-test-utils.vuejs.org/api/options.html#stubs

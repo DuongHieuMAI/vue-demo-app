@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from '@router'
 import store from '@state/store'
+import vuetify from './plugins/vuetify'
 import App from './app.vue'
 
 // Globally register all `_base`-prefixed components
@@ -19,6 +20,7 @@ const app = new Vue({
   router,
   store,
   render: (h) => h(App),
+  vuetify,
 }).$mount('#app')
 
 // If running e2e tests...

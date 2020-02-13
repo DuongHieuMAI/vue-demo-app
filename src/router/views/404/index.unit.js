@@ -1,4 +1,4 @@
-import View404 from './_404.vue'
+import View404 from './index.vue'
 
 describe('@views/404', () => {
   it('is a valid view', () => {

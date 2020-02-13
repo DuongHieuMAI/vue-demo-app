@@ -1,7 +1,7 @@
-import NavBar from './nav-bar.vue'
+import NavBar from './index.vue'
 
 describe('@components/nav-bar', () => {
-  it(`displays the user's name in the profile link`, () => {
+  it(`allow logout after login`, () => {
     const { vm } = shallowMount(
       NavBar,
       createComponentMocks({
@@ -20,9 +20,9 @@ describe('@components/nav-bar', () => {
       })
     )
 
-    const profileRoute = vm.loggedInNavRoutes.find(
-      (route) => route.name === 'profile'
+    const logoutRoute = vm.loggedInNavRoutes.find(
+      (route) => route.name === 'logout'
     )
-    expect(profileRoute.title()).toEqual('Logged in as My Name')
+    expect(logoutRoute.title).toEqual('Log out')
   })
 })

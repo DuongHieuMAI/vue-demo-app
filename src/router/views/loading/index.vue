@@ -1,5 +1,5 @@
 <script>
-import Layout from '@layouts/main.vue'
+import Layout from '@layouts/main/index.vue'
 
 export default {
   page: {

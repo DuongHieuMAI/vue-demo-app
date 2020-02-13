@@ -1,4 +1,4 @@
-import Login from './login.vue'
+import Login from './index.vue'
 
 describe('@views/login', () => {
   it('is a valid view', () => {

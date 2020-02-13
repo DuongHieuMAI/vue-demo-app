@@ -40,8 +40,8 @@ export default {
 @import '@design';
 
 .active a {
-  font-weight: 600;
-  color: $color-link-text-active;
+  // font-weight: 600;
+  color: white;
   text-decoration: none;
   cursor: default;
 }
