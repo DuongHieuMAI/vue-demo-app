@@ -1,5 +1,4 @@
 import { Icon } from 'leaflet'
-// import 'leaflet/dist/leaflet.css'
 
 delete Icon.Default.prototype._getIconUrl
 Icon.Default.mergeOptions({

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from '@router'
 import store from '@state/store'
 import vuetify from './plugins/vuetify'
+import 'leaflet/dist/leaflet.css'
 import App from './app.vue'
 
 // Globally register all `_base`-prefixed components
