@@ -17,7 +17,10 @@ module.exports = {
     '.+\\.(css|scss|jpe?g|png|gif|webp|svg|mp4|webm|ogg|mp3|wav|flac|aac|woff2?|eot|ttf|otf)$':
       'jest-transform-stub',
   },
-  moduleNameMapper: require('./aliases.config').jest,
+  moduleNameMapper: Object.assign(require('./aliases.config').jest, {
+    '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
+      'jest-transform-stub',
+  }),
   snapshotSerializers: ['jest-serializer-vue'],
   coverageDirectory: '<rootDir>/tests/unit/coverage',
   collectCoverageFrom: [
