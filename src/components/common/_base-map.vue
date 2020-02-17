@@ -1,6 +1,5 @@
 <script>
 import L from 'leaflet'
-// import 'leaflet/dist/leaflet.css'
 
 L.Control.include({
   _refocusOnMap: L.Util.falseFn, // Do nothing.
@@ -16,7 +15,7 @@ export default {
       clipped: false,
       drawer: true,
       fixed: false,
-      miniVariant: false,
+      // miniVariant: false,
       title: 'Simple map interface',
       layerActive: true,
       points: '',
@@ -103,5 +102,6 @@ export default {
 </script>
 
 <template>
-  <div id="map" style="position: absolute; width: 100%;height: 99%"></div>
+  <!-- <div id="map" style="position: absolute; width: 100%;height: 99%"></div> -->
+  <div id="map"></div>
 </template>

@@ -22,8 +22,8 @@ export default {
       return process.env.NODE_ENV === 'production'
         ? {}
         : {
-            username: 'Use "admin" to log in with the mock API',
-            password: 'Use "password" to log in with the mock API',
+            username: 'Use "admin" to log in with mock API',
+            password: 'Use "password" to log in with mock API',
           }
     },
   },
@@ -57,42 +57,44 @@ export default {
 <template>
   <Layout>
     <v-layout justify-center>
-      <BasePanel title="Login" :class="$style.form">
-        <v-form>
-          <BaseInputText
-            v-model="username"
-            name="username"
-            label="Username"
-            :placeholder="placeholders.username"
-          >
-          </BaseInputText>
-          <br />
-          <BaseInputText
-            v-model="password"
-            name="password"
-            label="Password"
-            type="password"
-            :placeholder="placeholders.password"
-          >
-          </BaseInputText>
-          <br />
-          <p v-if="authError">
-            There was an error logging in to your account.
-          </p>
-          <br />
-          <v-btn
-            class="cyan"
-            dark
-            :disabled="tryingToLogIn"
-            @click="tryToLogIn"
-          >
-            <v-icon v-if="tryingToLogIn" name="sync" spin />
-            <span v-else>
-              Log in
-            </span>
-          </v-btn>
-        </v-form>
-      </BasePanel>
+      <v-card>
+        <BasePanel title="Login" :class="$style.form">
+          <v-form>
+            <BaseInputText
+              v-model="username"
+              name="username"
+              label="Username"
+              :placeholder="placeholders.username"
+            >
+            </BaseInputText>
+            <br />
+            <BaseInputText
+              v-model="password"
+              name="password"
+              label="Password"
+              type="password"
+              :placeholder="placeholders.password"
+            >
+            </BaseInputText>
+            <br />
+            <p v-if="authError">
+              There was an error logging in to your account.
+            </p>
+            <!-- <br /> -->
+            <v-btn
+              class="cyan"
+              dark
+              :disabled="tryingToLogIn"
+              @click="tryToLogIn"
+            >
+              <v-icon v-if="tryingToLogIn" name="sync" spin />
+              <span v-else>
+                Log in
+              </span>
+            </v-btn>
+          </v-form>
+        </BasePanel>
+      </v-card>
     </v-layout>
   </Layout>
 </template>
@@ -103,7 +105,7 @@ export default {
 .form {
   min-width: $size-content-width-min;
   max-width: $size-content-width-max;
-  padding: 5px 2px 3px 4px;
+  // padding: 5px 2px 3px 4px;
   margin-top: 5px;
   text-align: center;
 }

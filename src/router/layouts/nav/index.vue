@@ -6,6 +6,7 @@ export default {
   components: { NavBarRoutes },
   data() {
     return {
+      miniVariant: false,
       drawer: false,
       persistentNavRoutes: [
         {
@@ -27,6 +28,18 @@ export default {
         {
           name: 'login',
           title: 'Log in',
+        },
+      ],
+      accountRoutes: [
+        {
+          name: 'account',
+          title: 'Account',
+        },
+      ],
+      aboutUsRoutes: [
+        {
+          name: 'aboutus',
+          title: 'About us',
         },
       ],
     }
@@ -62,7 +75,7 @@ export default {
 
       <v-toolbar-title :class="$style.container">
         <v-app-bar-nav-icon>
-          <v-icon color="white" large> mdi-account</v-icon>
+          <v-icon color="white" medium> mdi-account</v-icon>
         </v-app-bar-nav-icon>
         <NavBarRoutes v-if="loggedIn" :routes="loggedInNavRoutes" />
         <NavBarRoutes v-else :routes="loggedOutNavRoutes" />
@@ -76,14 +89,24 @@ export default {
         </v-tabs>
       </template> -->
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" app :width="150">
+    <v-navigation-drawer v-model="drawer" app :width="200" temporary>
       <v-list nav dense>
+        <v-list-item two-line :class="miniVariant && 'px-0'">
+          <v-list-item-avatar>
+            <img src="https://randomuser.me/api/portraits/men/81.jpg" />
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>Vue-Demo-App</v-list-item-title>
+            <v-list-item-subtitle>Map Explorer</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item-group active-class="deep-purple--text text--accent-4">
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title :class="$style.container">
+            <v-list-item-title :class="$style.menu">
               <NavBarRoutes :routes="persistentNavRoutes" />
             </v-list-item-title>
           </v-list-item>
@@ -92,14 +115,18 @@ export default {
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title :class="$style.menu">
+              <NavBarRoutes :routes="accountRoutes" />
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-information</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>About us</v-list-item-title>
+            <v-list-item-title :class="$style.menu">
+              <NavBarRoutes :routes="aboutUsRoutes" />
+            </v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -120,6 +147,11 @@ export default {
   }
 
   text-align: center;
+  list-style-type: none;
+}
+
+.menu {
+  text-align: left;
   list-style-type: none;
 }
 </style>
