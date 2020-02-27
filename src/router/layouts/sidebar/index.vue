@@ -1,14 +1,19 @@
 <script>
 import { LControl } from 'vue2-leaflet'
-import MapTile from './map-tile.vue'
+import MapTile from './maptile/index.vue'
+import StaticLayer from './layers/static/index.vue'
+import DynamicLayer from './layers/dynamic/index.vue'
 
 export default {
   components: {
     LControl,
     MapTile,
+    StaticLayer,
+    DynamicLayer,
   },
   data: () => ({
     currentSelection: -1,
+
     items: [
       {
         icon: 'layers',
@@ -33,13 +38,19 @@ export default {
         ? (this.currentSelection = -1)
         : (this.currentSelection = this.items.indexOf(item))
     },
+    isSidebarContentVisible: function(name) {
+      if (this.currentSelection === -1) {
+        return false
+      }
+      return this.items[this.currentSelection].name === name
+    },
   },
 }
 </script>
 
 <template>
   <div>
-    <LControl position="topright" style="top: 100px; right: 0;">
+    <LControl position="topright" style="top: 60px; right: 0; opacity: 0.8">
       <v-layout row wrap class="pa-0">
         <v-card class="d-flex flex-wrap-reverse">
           <v-btn-toggle class="d-flex flex-column order-2">
@@ -50,7 +61,7 @@ export default {
                     <v-btn
                       small
                       :color="currentSelection === index ? 'blue' : 'black'"
-                      style="height: 40px; opacity: 0.8"
+                      style="height: 40px; opacity: 0.9"
                       v-on="on"
                       @click="showSidebarContent(item)"
                     >
@@ -63,26 +74,32 @@ export default {
               <v-divider light class="mx-4"></v-divider>
             </div>
           </v-btn-toggle>
-          <v-card
-            v-if="currentSelection !== -1"
-            class="d-flex pa-2 order-1"
-            style=" background-color: white;opacity: 0.8"
-          >
-            abc
-          </v-card>
         </v-card>
       </v-layout>
-      <!-- </v-container> -->
-      <!-- <v-layout row wrap style="top: 200px; right: 100px;">
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title>Single-line item</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-layout> -->
     </LControl>
-    <LControl position="topright" style="top: 500px; right: 500;">
-      <MapTile />
+    <LControl position="topright" style="top: -72px; right: 52px; opacity: 0.8">
+      <v-layout row wrap class="pa-0"> </v-layout>
+      <StaticLayer
+        v-if="isSidebarContentVisible('staticLayer')"
+        class="d-flex pa-2 order-1"
+        style="background-color: black; opacity: 0.9"
+      />
+    </LControl>
+    <LControl position="topright" style="top: -42px; right: 52px; opacity: 0.8">
+      <v-layout row wrap class="pa-0"> </v-layout>
+      <DynamicLayer
+        v-if="isSidebarContentVisible('dynamicLayer')"
+        class="d-flex pa-2 order-1"
+        style="background-color: black; opacity: 0.9"
+      />
+    </LControl>
+    <LControl position="topright" style="top: -12px; right: 52px; opacity: 0.8">
+      <v-layout row wrap class="pa-0"> </v-layout>
+      <MapTile
+        v-if="isSidebarContentVisible('mapTile')"
+        class="d-flex pa-2 order-1"
+        style="background-color: black; opacity: 0.9"
+      />
     </LControl>
   </div>
 </template>

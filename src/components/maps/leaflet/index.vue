@@ -35,6 +35,7 @@
             </div>
           </LTooltip>
         </LMarker>
+        <LControlZoom position="topright" style="top: 1px;"></LControlZoom>
         <slot />
       </LMap>
     </v-img>
@@ -44,7 +45,14 @@
 <script>
 import './index'
 import { latLng } from 'leaflet'
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from 'vue2-leaflet'
+import {
+  LMap,
+  LTileLayer,
+  LMarker,
+  LPopup,
+  LTooltip,
+  LControlZoom,
+} from 'vue2-leaflet'
 
 export default {
   name: 'Example',
@@ -54,6 +62,7 @@ export default {
     LMarker,
     LPopup,
     LTooltip,
+    LControlZoom,
   },
   data() {
     return {
@@ -68,10 +77,17 @@ export default {
       currentCenter: latLng(47.41322, -1.219482),
       showParagraph: false,
       mapOptions: {
-        zoomSnap: 0.5,
+        zoomControl: false,
       },
       showMap: true,
     }
+  },
+
+  mounted() {
+    this.$root.$on('change_map_tile', (mapTile) => {
+      this.url = mapTile.url
+      this.attribution = mapTile.attribution
+    })
   },
   methods: {
     zoomUpdate(zoom) {
